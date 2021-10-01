@@ -7,15 +7,22 @@ const MongoClient = mongo.MongoClient;
 const mongourl = "mongodb+srv://edureka123:1234@cluster0.nbutl.mongodb.net/eduaug?retryWrites=true&w=majority"
 
 var db;
-let col_name ="location"
+
 //get
 app.get('/',(req,res) => {
     res.send("Welcome to Node Api1")
 })
 
 //category
-app.get('/category',(req,res) =>{
-    db.collection(col_name).find().toArray((err,result)=>{
+app.get('/location',(req,res) =>{
+    db.collection('location').find().toArray((err,result)=>{
+        if(err) throw err;
+        res.send(result)
+    })
+})
+
+app.get('/cuisine',(req,res) =>{
+    db.collection('cuisine').find().toArray((err,result)=>{
         if(err) throw err;
         res.send(result)
     })
